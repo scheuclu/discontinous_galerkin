@@ -1,0 +1,145 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+\usepackage{graphicx}
+\usepackage{epstopdf}
+
+\usetikzlibrary{pgfplots.groupplots}
+
+%\usepackage{struktex}
+\usepackage{hyperref}
+
+\usepackage[left=1.5cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
+
+
+
+\definecolor{s1_1}{RGB}{38,70,83}
+\definecolor{s1_2}{RGB}{42,157,143}
+\definecolor{s1_3}{RGB}{233,196,106}
+\definecolor{s1_4}{RGB}{244,162,97}
+\definecolor{s1_5}{RGB}{231,111,81}
+
+\definecolor{s2_1}{RGB}{246,81,29}
+\definecolor{s2_2}{RGB}{255,180,0}
+\definecolor{s2_3}{RGB}{0,166,237}
+\definecolor{s2_4}{RGB}{127,184,0}
+\definecolor{s2_5}{RGB}{13,44,84}
+
+
+
+\pgfplotscreateplotcyclelist{convergelist}{
+s2_1, thick, solid, mark=*\\%
+s2_2, thick, solid, mark=square\\%
+s2_3, thick, solid, mark=diamond*\\%
+s2_4, thick, solid, mark=triangle\\%
+s2_5, thick, solid, mark=asterisk\\%
+}
+
+\pgfplotscreateplotcyclelist{elelist}{
+s2_1, solid\\%
+s2_2, solid\\%
+s2_3, solid\\%
+s2_4, solid\\%
+s2_5, solid\\%
+}
+
+
+%\pgfplotsutilstrreplace{_}{\_aa}{##1}
+
+%\usepackage{syntax}[nounderscore]
+
+
+\def \resultspath {../results}
+
+\def \foobar {config_task3_K5_N1_LF}
+
+
+\newcommand{\dvec}[1]{\boldsymbol{ \mathsf{#1} } }         % for vectors
+\newcommand{\dmat}[1]{\boldsymbol{\mathsf{#1}}}           % for matrices
+
+\newcommand{\Bd}[2]{ (#1,#2)_{D^k} }           % bilienarfor over domian
+\newcommand{\Bb}[2]{ (#1,#2)_{\partial D^k} }           % bilienarfor over boundary
+
+
+%\newcommand{\resultspath}{home/lukas/LRZ Sync+Share/Studium/Fach/DG/DG\_project/lukas/results}
+%\newcommand{\resultspath}{home/lukas/LRZ Sync+Share/Studium/Fach/DG/DG_project/lukas/results}
+\newcommand{\getResultFile}[1]{\resultspath/#1}
+\newcommand{\getEleFile}[2]{\getResultFile{#1}\_ele#2.dat}
+
+%home/lukas/LRZ Sync+Share/Studium/Fach/DG/DG_project/lukas
+
+
+\title{Report Project 2}
+\author{Lukas Scheucher}
+
+
+
+\pgfplotstableset{
+  col sep=comma,
+    create on use/X/.style={create col/copy column from table={/home/lukas/LRZ Sync+Share/Studium/Fach/DG/DG_project/lukas/results/config_task3_K5_N1_LF_x.dat}{0}}
+}
+
+
+%\pgfplotstableread{/home/lukas/LRZ Sync+Share/Studium/Fach/DG/DG_project/lukas/results/config_task3_K5_N1_LF_V_ele2.dat}\Vtable
+%\pgfplotstableread{/home/lukas/LRZ Sync+Share/Studium/Fach/DG/DG_project/lukas/results/config_task3_K5_N1_LF_U.dat}\Utable
+%\pgfplotstableread{/home/lukas/LRZ Sync+Share/Studium/Fach/DG/DG_project/lukas/results/config_task3_K5_N1_LF_t.dat}\ttable
+%\pgfplotstableread{/home/lukas/LRZ Sync+Share/Studium/Fach/DG/DG_project/lukas/results/config_task3_K5_N1_LF_x.dat}\xtable
+
+
+
+\begin{document}
+\maketitle
+aaa
+\part{aSDAs}
+
+\chapter*{Reuslts}
+\section*{Task3}
+a
+\section*{Task4}
+
+
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}
+
+\begin{loglogaxis}[xlabel={$numele$},ylabel={$\epsilon_p$}, grid=major,width=12cm,height=7cm, legend pos=outer north east,cycle list name=convergelist]
+
+      \addplot+ table[x index=0,y index=1] {\resultspath/config_task3_convergence_N1_LF.dat};
+      \addplot+ table[x index=0,y index=1] {\resultspath/config_task3_convergence_N2_LF.dat};
+      \addplot+ table[x index=0,y index=1] {\resultspath/config_task3_convergence_N3_LF.dat};
+      \addplot+ table[x index=0,y index=1] {\resultspath/config_task3_convergence_N4_LF.dat};
+      \pgfplotsset{cycle list shift=-4}
+      \addplot+[dashed] table[x index=0,y index=1] {\resultspath/config_task3_convergence_N1_HDG.dat};
+      \addplot+[dashed] table[x index=0,y index=1] {\resultspath/config_task3_convergence_N2_HDG.dat};
+      \addplot+[dashed] table[x index=0,y index=1] {\resultspath/config_task3_convergence_N3_HDG.dat};
+      \addplot+[dashed] table[x index=0,y index=1] {\resultspath/config_task3_convergence_N4_HDG.dat};
+      \legend{N=1 (LF),N=2 (LF),N=3 (LF),N=4 (LF),N=1 (HDG),N=2 (HDG),N=3 (HDG),N=4 (HDG)}
+\end{loglogaxis}
+
+\end{tikzpicture}
+\end{center}
+\caption{Comparison of LF and HDG flux for task 3. From this setup one can not really determine a superior flux.}
+\label{fig:task3_flux_comparison}
+\end{figure}
+
+
+
+
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{\resultspath/config_task3_K200_N1_hdg.pdf}
+\label{fig:task3_imagesc_hdg}
+\caption{Setup as described in \ref{fig:setup3} with dirichlet boundary conditions. The x-axis shows the position, the y-axis the time. A perfect periodic oscillation can be observed. For this plot 200 elements with a polymomial degree of 1 were used.}
+\end{center}
+\end{figure}
+
+
+
+\end{document}
