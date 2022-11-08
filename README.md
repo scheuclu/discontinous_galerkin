@@ -11,7 +11,7 @@ $$
 \end{align}
 $$
 
-**NOTE:** Personally, I would never choose Matlab for any kind of project. **It's a terrible language**. However, it was mandatory for this university project.
+**NOTE:** Personally, I would never choose **Matlab** for any kind of project. **It's a terrible language**. However, it was mandatory for this university project.
 
 
 Check out the [final_report](reort/build/../../report/build/report_project2.pdf) for a comprehensive explanation and results.
