@@ -2,7 +2,7 @@
 
 This is is a project I did in University.  
 
-The goals was to implement a simple Disconntious Galerkin solver in 1D for the acoustic wave equation in 1D:
+The goals was to implement a simple [Disconntious Galerkin](https://en.wikipedia.org/wiki/Discontinuous_Galerkin_method) solver in 1D for the [acoustic wave equation](https://en.wikipedia.org/wiki/Acoustic_wave_equation):
 
 $$
 \begin{align}
@@ -11,7 +11,7 @@ $$
 \end{align}
 $$
 
-**NOTE:** Personally, I would never choose Matlab for any kind of prject. It's a terrible language. However, it was mandatory for this university project;
+**NOTE:** Personally, I would never choose Matlab for any kind of project. **It's a terrible language**. However, it was mandatory for this university project.
 
 
 Check out the [final_report](reort/build/../../report/build/report_project2.pdf) for a comprehensive explanation and results.
